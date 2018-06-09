@@ -35,7 +35,7 @@ $result = mysql_query($sql);
                                    echo '<script language="javascript">';
                                     echo 'alert("Successfully Registered")';
                                     echo '</script>';
-                                    echo '<meta http-equiv="refresh" content="0;url=../index.php" />';
+                                    echo '<meta http-equiv="refresh" content="0;url=../index1.php" />';
                             }
 
 		}

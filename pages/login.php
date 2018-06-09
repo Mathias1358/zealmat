@@ -27,7 +27,7 @@
         echo '<script language="javascript">';
         echo 'alert("Incorrect username or password")';
         echo '</script>';
-        echo '<meta http-equiv="refresh" content="0;url=../index.php" />';
+        echo '<meta http-equiv="refresh" content="0;url=../index1.php" />';
     }
    
 ?>

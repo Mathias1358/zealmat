@@ -26,6 +26,14 @@ $userid = $_SESSION['user_Id'];
     <script src="../js/jquery.min.js"></script>
     <script src="../js/bootstrap.js"></script>
     <script src="../js/bootstrap.min.js"></script>
+	<style>
+#move{
+	position: absolute;
+	left: 480px;
+top :300px;
+
+}
+</style>
 </head>
 <body>
 	<!-- Navigation -->
@@ -48,9 +56,7 @@ $userid = $_SESSION['user_Id'];
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse">
 
-                <ul class="nav navbar-nav navbar-left">
-                    <li><a href="#quest"> Post a Question</a></li>
-                </ul>
+               
      				
 					 <ul class="nav navbar-nav navbar-right">
                          <li><a href="#" ><span class="glyphicon glyphicon-user"></span> <?php echo $username;?></a></li>
@@ -64,73 +70,8 @@ $userid = $_SESSION['user_Id'];
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <div class="container" style="margin:7% auto;">
-    	<h4>Latest Discussion</h4>
-    	<hr>
-        <?php  include "../functions/db.php";
-
-        $sel = mysql_query("SELECT * from category");
-        while($row=mysql_fetch_assoc($sel)){
-            extract($row);
-           echo '<div class="panel panel-success">
-                    <div class="panel-heading">
-                    <h3 class="panel-title">'.$category.'</h3>
-                    </div> 
-                    <div class="panel-body">
-                    <table class="table table-stripped">
-                    <tr>
-                    <th>Topic title</th>
-                    <th>Category</th>
-                    <th>Action</th>
-                    </tr>';
-                    $sel1 = mysql_query("SELECT * from tblpost where cat_id='$cat_id' ");
-                    while($row1=mysql_fetch_assoc($sel1)){
-                        extract($row1);
-                        echo '<tr>';
-                        echo '<td>'.$title.'</td>';
-                        echo '<td>'.$category.'</td>';
-                        echo '<td><a href="content.php?post_id='.$post_Id.'"><button class="btn btn-success">View</button></td>';
-                        echo '</tr>';
-                    }
-
-
-                echo '</table>
-                    </div>
-                </div>';
-        }
-        ?>
-		<div class="my-quest" id="quest">
-            <div> 
-                <form method="POST" action="question-function.php">
-                        
-                         <label>Category</label>
-                        <select name="category" class="form-control">
-                            <option></option>
-                            <?php $sel = mysql_query("SELECT * from category");
-
-                                if($sel==true){
-                                    while($row=mysql_fetch_assoc($sel)){
-                                        extract($row);
-                                        echo '<option value='.$cat_id.'>'.$category.'</option>';
-                                    }
-                                }
-                            ?>
-                        </select>
-                        <label>Topic Title</label>
-                        <input type="text" class="form-control" name="title"required>
-                        <label>Content</label>
-                        <textarea name="content"class="form-control">
-                        </textarea>
-                       <br>
-                        <input type="hidden" name="userid" value=<?php echo $userid; ?>>
-                        <input type="submit" class="btn btn-success pull-right" value="Post">
-                   </form><br>
-                <hr>
-                  <a href="" class="pull-right">Close</a>
-              </div>
-        </div>
-
-
-
+   <div id="move">
+<a href="fillregister.php"><input type="submit" value="Fill Registration Form" class="btn btn-success" style="width:200%;"></a><br><br>
+<a href="printregister.php"><input type="submit" value="Print Registration Form" class="btn btn-success" style="width:200%;"></a>
 </body>
 </html>
